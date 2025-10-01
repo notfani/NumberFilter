@@ -126,5 +126,38 @@ python main.py
 ```
 NumberFilter/
 ├── main.py          # Основной файл программы
+├── filterManager.py  # Менеджер фильтров
+├── menuManager.py    # Менеджер меню
+├──filters/
+├── __init__.py
+├── basic/
+│   ├── __init__.py
+│   ├── range_filter.py
+│   ├── parity_filter.py
+│   ├── positivity_filter.py
+│   └── uniqueness_filter.py
+├── math/
+│   ├── __init__.py
+│   ├── divisibility_filter.py
+│   ├── square_filter.py
+│   ├── prime_filter.py
+│   ├── power_filter.py
+│   ├── divisor_count_filter.py
+│   ├── square_root_filter.py
+│   ├── fibonacci_filter.py
+│   └── semiprime_filter.py
+├── digit_properties/
+│   ├── __init__.py
+│   ├── digit_count_filter.py
+│   ├── digit_sum_filter.py
+│   ├── palindrome_filter.py
+│   ├── digit_place_filter.py
+│   ├── digit_difference_filter.py
+│   ├── digit_average_filter.py
+│   └── digit_delta_filter.py
+└── special/
+    ├── __init__.py
+    └── sequence_filter.py
 └── README.md        # Документация
+
 ```

@@ -1,4 +1,5 @@
 import sys
+import filterManager
 
 def kill():
     print("I'm dead now...")
@@ -49,16 +50,12 @@ def PrintSubMenu(filter_type):
 def CatchInput():
     while True:
         try:
-            user_input = input().strip()
+            user_input = int(input())
             if not user_input:
                 print("Ошибка: Пустой ввод. Попробуйте ещё раз.")
                 continue
-
-            caught = list(map(int, user_input.split()))
-            if len(caught) == 1:
-                return caught[0]
             else:
-                return caught
+                return user_input
         except ValueError:
             print("Ошибка: Введите только целые числа. Попробуйте ещё раз.")
         except Exception as e:
@@ -68,19 +65,23 @@ def InputManager(choice: int):
     if choice == 1:
         PrintSubMenu(1)
         sub_choice = CatchInput()
-        return 1, sub_choice
+        filterManager.MainFilter(sub_choice)
+        return None
     elif choice == 2:
         PrintSubMenu(2)
         sub_choice = CatchInput()
-        return 2, sub_choice
+        filterManager.MathFilter(sub_choice)
+        return None
     elif choice == 3:
         PrintSubMenu(3)
         sub_choice = CatchInput()
-        return 3, sub_choice
+        filterManager.DigitPropertyFilter(sub_choice)
+        return None
     elif choice == 4:
         PrintSubMenu(4)
         sub_choice = CatchInput()
-        return 4, sub_choice
+        filterManager.SpecialFilter(sub_choice)
+        return None
     elif choice == 0:
         kill()
         return None
