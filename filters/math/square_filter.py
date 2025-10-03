@@ -2,7 +2,7 @@ import math
 
 
 def get_squares_until(n):
-    return {i**2 for i in range(1, int(math.sqrt(n)) + 1)}
+    return {i**2 for i in range(1, int(math.sqrt(n)))}
 
 
 def square_filter(numbers):
