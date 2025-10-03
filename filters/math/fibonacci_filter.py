@@ -11,7 +11,7 @@ def is_perfect_square(n):
 
 def is_fibonacci(n):
     # n является числом Фибоначчи, если 5*n^2 + 4 или 5*n^2 - 4 является полным квадратом
-    return is_perfect_square(5 * n * n + 4) or is_perfect_square(5 * n * n - 4)
+    return is_perfect_square(5 * n * n + 4) and is_perfect_square(5 * n * n - 4)
 
 def apply_filter(numbers, filter_type="is_fibonacci"):
     filtered_numbers = []
