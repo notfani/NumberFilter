@@ -9,7 +9,7 @@ def apply_filter(numbers, digit_amount):
 
     filtered_numbers = []
     for num in numbers:
-        if len(str(num)) == digit_amount:
+        if len(str(abs(num))) == digit_amount:
             filtered_numbers.append(num)
 
     return filtered_numbers
