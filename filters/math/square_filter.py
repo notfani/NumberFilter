@@ -2,7 +2,7 @@ import math
 
 
 def get_squares_until(n):
-    return [i**2 for i in range(1, int(math.sqrt(n)) + 1)]
+    return {i**2 for i in range(1, int(math.sqrt(n)) + 1)}
 
 
 def square_filter(numbers):
@@ -28,6 +28,14 @@ def run():
         print(
             f"Ошибка: {'введите только целые числа' if 'invalid literal' in str(e) else str(e)}"
         )
+
+
+class SquareFilter:
+    def filter(self, numbers):
+        return square_filter(numbers)
+
+    def apply(self):
+        run()
 
 
 def smoke_test():

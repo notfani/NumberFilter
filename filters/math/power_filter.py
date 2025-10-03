@@ -1,15 +1,37 @@
 import math
 
 
-def is_square(x: int) -> bool:
-    if x < 0:
+def is_perfect_power(value: int) -> bool:
+    if value <= 1:
+        return value == 1
+
+    exponents = []
+    n = value
+    divisor = 2
+
+    while divisor * divisor <= n:
+        count = 0
+        while n % divisor == 0:
+            n //= divisor
+            count += 1
+        if count:
+            exponents.append(count)
+        divisor = 3 if divisor == 2 else divisor + 2
+
+    if n > 1:
+        exponents.append(1)
+
+    if not exponents:
         return False
-    r = math.isqrt(x)
-    return r * r == x
+
+    gcd = exponents[0]
+    for exp in exponents[1:]:
+        gcd = math.gcd(gcd, exp)
+    return gcd > 1
 
 
 def power_filter(numbers):
-    return [x for x in numbers if is_square(x)]
+    return [x for x in numbers if x > 0 and (x == 1 or is_perfect_power(x))]
 
 
 def run():
@@ -32,8 +54,13 @@ def run():
         )
 
 
+class PowerFilter:
+    def filter(self, numbers):
+        return power_filter(numbers)
+
+    def apply(self):
+        run()
+
+
 def smoke_test():
-    assert power_filter([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) == [1, 4, 9]
-
-
-smoke_test()
+    assert power_filter([1, 2, 3, 4, 5, 8, 9, 16, 27, 32]) == [1, 4, 8, 9, 16, 27, 32]

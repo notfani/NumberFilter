@@ -40,5 +40,13 @@ def run():
         )
 
 
+class PrimeFilter:
+    def filter(self, numbers):
+        return prime_filter(numbers)
+
+    def apply(self):
+        run()
+
+
 def smoke_test():
     assert prime_filter([-5, -1, 0, 1, 11, 13, 15, 21, 23, 29]) == [11, 13, 23, 29]
