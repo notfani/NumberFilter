@@ -31,7 +31,7 @@ def is_perfect_power(value: int) -> bool:
 
 
 def power_filter(numbers):
-    return [x for x in numbers if x > 0 and (x == 1 or is_perfect_power(x))]
+    return [x for x in numbers if x > 0 and is_perfect_power(x)]
 
 
 def run():
