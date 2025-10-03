@@ -13,7 +13,7 @@ def apply_filter(numbers, threshold):
         s = str(abs(number))  # игнорируем знак
         first = int(s[0])
         last = int(s[-1])
-        if abs(first - last) > threshold:
+        if abs(first + last) > threshold:
             filtered_numbers.append(number)
 
     return filtered_numbers
