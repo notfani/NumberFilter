@@ -83,9 +83,15 @@ class MutationTestDigitSumFilter(unittest.TestCase):
         """Мутация: убрана функция abs() для отрицательных чисел"""
         def mutated_get_digit_sum(n):
             s = 0
-            for digit in str(n):  # МУТАЦИЯ: убрано abs()
-                if digit.isdigit():  # Избегаем ошибки с символом '-'
-                    s += int(digit)
+            # МУТАЦИЯ: убрано abs() - обрабатываем отрицательные числа как есть
+            str_n = str(n)
+            if str_n.startswith('-'):
+                # Считаем знак минус как отдельную "цифру" со значением 1
+                s += 1
+                str_n = str_n[1:]  # убираем знак минус
+
+            for digit in str_n:
+                s += int(digit)
             return s
 
         def mutated_apply_filter(numbers, target_sum, filter_type="equals"):
@@ -99,6 +105,11 @@ class MutationTestDigitSumFilter(unittest.TestCase):
 
         # Тест с отрицательными числами
         test_numbers_with_negative = [-123, 123, -456]
+
+        # Оригинальная функция: -123 → abs(-123) → "123" → 1+2+3 = 6
+        # Мутированная функция: -123 → "-123" → 1(за минус)+1+2+3 = 7
+
+        # Ищем числа с суммой цифр = 6
         original_result = digit_sum_filter.apply_filter(test_numbers_with_negative, 6, "equals")
         mutated_result = mutated_apply_filter(test_numbers_with_negative, 6, "equals")
 
