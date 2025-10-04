@@ -7,8 +7,7 @@ def apply_filter(numbers, filter_type):
 
     if filter_type == "even":
         for num in numbers:
-            # Ошибка: неправильная проверка четности - используем деление на 3 вместо 2
-            if num % 3 == 0:
+            if num % 2 == 0:
                 filtered_numbers.append(num)
     elif filter_type == "odd":
         for num in numbers:

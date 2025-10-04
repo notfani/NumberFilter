@@ -7,20 +7,18 @@ class TestSquareFilter(unittest.TestCase):
     # -------- get_squares_until --------
 
     def test_get_squares_until_basic(self):
-        # Для n=10 должны получить квадраты до sqrt(10) ≈ 3.16, то есть 1, 4, 9
-        # Но в коде range(1, int(math.sqrt(n))), то есть range(1, 3), что даст [1, 2]
-        # И квадраты будут {1, 4}
-        expected = {1, 4}  # 1^2=1, 2^2=4
+        # Для n=10 должны получить квадраты до и включая ⌊√10⌋ = 3: 1, 4, 9
+        expected = {1, 4, 9}
         self.assertEqual(mod.get_squares_until(10), expected)
 
     def test_get_squares_until_larger_n(self):
-        # Для n=25: sqrt(25)=5, range(1, 5) даст [1, 2, 3, 4]
-        expected = {1, 4, 9, 16}  # 1^2, 2^2, 3^2, 4^2
+        # Для n=25: sqrt(25)=5 -> 1^2, 2^2, 3^2, 4^2, 5^2
+        expected = {1, 4, 9, 16, 25}
         self.assertEqual(mod.get_squares_until(25), expected)
 
     def test_get_squares_until_small_n(self):
-        # Для n=2: sqrt(2)≈1.41, int(1.41)=1, range(1, 1) пустой
-        self.assertEqual(mod.get_squares_until(2), set())
+        # Для n=2: ⌊√2⌋ = 1 -> {1}
+        self.assertEqual(mod.get_squares_until(2), {1})
 
     # -------- square_filter --------
 
@@ -53,14 +51,12 @@ class TestSquareFilter(unittest.TestCase):
         self.assertEqual(mod.square_filter(numbers), expected)
 
     def test_square_filter_large_numbers(self):
-        # Большие числа
+        # Большие числа — важно, чтобы квадраты точно определялись
         numbers = [49, 50, 64, 65, 81, 100]
-        expected = [49, 64, 81]  # 7^2, 8^2, 9^2 (100=10^2 не включен из-за логики range)
+        expected_subset = [49, 64, 81]  # проверяем минимум
         result = mod.square_filter(numbers)
-        # Проверим что получаем ожидаемые квадраты (может отличаться из-за реализации)
-        self.assertIn(49, result)
-        self.assertIn(64, result)
-        self.assertIn(81, result)
+        for x in expected_subset:
+            self.assertIn(x, result)
 
     def test_square_filter_empty_list(self):
         # Пустой список вызовет ошибку в max(numbers)
