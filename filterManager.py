@@ -25,21 +25,31 @@ def MainFilter(sub_choice: int):
 
 def MathFilter(sub_choice: int):
     if sub_choice == 1:
-        DivisibilityFilter()
+        # Фильтр по делимости
+        math.divisibility_filter.run()
     elif sub_choice == 2:
-        SquareFilter()
+        # Фильтр по квадратам
+        filter = math.square_filter.SquareFilter()
+        filter.apply()
     elif sub_choice == 3:
-        PrimeFilter()
+        # Фильтр простых чисел
+        filter = math.filter_primes.PrimeFilter()
+        filter.apply()
     elif sub_choice == 4:
-        PowerFilter()
+        # Фильтр по степеням
+        math.power_filter.run()
     elif sub_choice == 5:
-        DivisorCountFilter()
+        # Фильтр по количеству делителей
+        math.divisor_count_filter.run()
     elif sub_choice == 6:
-        SquareRootFilter()
+        # Фильтр по квадратным корням
+        math.square_root_filter.run()
     elif sub_choice == 7:
-        FibonacciFilter()
+        # Фильтр Фибоначчи
+        math.fibonacci_filter.run()
     elif sub_choice == 8:
-        SemiprimeFilter()
+        # Фильтр полупростых чисел
+        math.semiprime_filter.run()
     elif sub_choice == 0:
         return
     else:
@@ -48,19 +58,27 @@ def MathFilter(sub_choice: int):
 
 def DigitPropertyFilter(sub_choice: int):
     if sub_choice == 1:
-        DigitCountFilter()
+        # Фильтр по количеству цифр
+        digit_properties.digit_count_filter.run()
     elif sub_choice == 2:
-        DigitSumFilter()
+        # Фильтр по сумме цифр
+        digit_properties.digit_sum_filter.run()
     elif sub_choice == 3:
-        PalindromeFilter()
+        # Фильтр палиндромов
+        digit_properties.palindrome_filter.run()
     elif sub_choice == 4:
-        DigitPlaceFilter()
+        # Фильтр по позиции цифры
+        filter = digit_properties.digit_place_filter.DigitPlaceFilter()
+        filter.apply()
     elif sub_choice == 5:
-        DigitDifferenceFilter()
+        # Фильтр по разности цифр
+        digit_properties.digit_difference_filter.run()
     elif sub_choice == 6:
-        DigitAverageFilter()
+        # Фильтр по среднему значению цифр
+        digit_properties.digit_average_filter.run()
     elif sub_choice == 7:
-        DigitDeltaFilter()
+        # Фильтр по дельте цифр
+        digit_properties.digit_delta_filter.run()
     elif sub_choice == 0:
         return
     else:
@@ -69,7 +87,8 @@ def DigitPropertyFilter(sub_choice: int):
 
 def SpecialFilter(sub_choice: int):
     if sub_choice == 1:
-        SequenceFilter()
+        # Фильтр последовательностей
+        special.sequence_filter.run()
     elif sub_choice == 0:
         return
     else:
