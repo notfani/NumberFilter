@@ -51,11 +51,7 @@ def CatchInput():
     while True:
         try:
             user_input = int(input())
-            if not user_input:
-                print("Ошибка: Пустой ввод. Попробуйте ещё раз.")
-                continue
-            else:
-                return user_input
+            return user_input  # Возвращаем любое целое число, включая 0
         except ValueError:
             print("Ошибка: Введите только целые числа. Попробуйте ещё раз.")
         except Exception as e:
@@ -63,28 +59,34 @@ def CatchInput():
 
 def InputManager(choice: int):
     if choice == 1:
-        PrintSubMenu(1)
-        sub_choice = CatchInput()
-        filterManager.MainFilter(sub_choice)
-        return None
+        while True:
+            PrintSubMenu(1)
+            sub_choice = CatchInput()
+            if sub_choice == 0:
+                break  # Возврат в главное меню
+            filterManager.MainFilter(sub_choice)
     elif choice == 2:
-        PrintSubMenu(2)
-        sub_choice = CatchInput()
-        filterManager.MathFilter(sub_choice)
-        return None
+        while True:
+            PrintSubMenu(2)
+            sub_choice = CatchInput()
+            if sub_choice == 0:
+                break  # Возврат в главное меню
+            filterManager.MathFilter(sub_choice)
     elif choice == 3:
-        PrintSubMenu(3)
-        sub_choice = CatchInput()
-        filterManager.DigitPropertyFilter(sub_choice)
-        return None
+        while True:
+            PrintSubMenu(3)
+            sub_choice = CatchInput()
+            if sub_choice == 0:
+                break  # Возврат в главное меню
+            filterManager.DigitPropertyFilter(sub_choice)
     elif choice == 4:
-        PrintSubMenu(4)
-        sub_choice = CatchInput()
-        filterManager.SpecialFilter(sub_choice)
-        return None
+        while True:
+            PrintSubMenu(4)
+            sub_choice = CatchInput()
+            if sub_choice == 0:
+                break  # Возврат в главное меню
+            filterManager.SpecialFilter(sub_choice)
     elif choice == 0:
         kill()
-        return None
     else:
         print("Ошибка: Неверный выбор. Попробуйте ещё раз.")
-        return None

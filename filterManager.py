@@ -18,8 +18,6 @@ def MainFilter(sub_choice: int):
         # Фильтр по уникальности
         uniqueness_filter = basic.uniqueness_filter.UniquenessFilter()
         uniqueness_filter.apply()
-    elif sub_choice == 0:
-        return
     else:
         print("Ошибка: Неверный выбор. Попробуйте ещё раз.")
 
@@ -50,8 +48,6 @@ def MathFilter(sub_choice: int):
     elif sub_choice == 8:
         # Фильтр полупростых чисел
         math.semiprime_filter.run()
-    elif sub_choice == 0:
-        return
     else:
         print("Ошибка: Неверный выбор. Попробуйте ещё раз.")
 
@@ -79,8 +75,6 @@ def DigitPropertyFilter(sub_choice: int):
     elif sub_choice == 7:
         # Фильтр по дельте цифр
         digit_properties.digit_delta_filter.run()
-    elif sub_choice == 0:
-        return
     else:
         print("Ошибка: Неверный выбор. Попробуйте ещё раз.")
 
@@ -89,7 +83,5 @@ def SpecialFilter(sub_choice: int):
     if sub_choice == 1:
         # Фильтр последовательностей
         special.sequence_filter.run()
-    elif sub_choice == 0:
-        return
     else:
         print("Ошибка: Неверный выбор. Попробуйте ещё раз.")
