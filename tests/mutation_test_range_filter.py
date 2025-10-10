@@ -43,7 +43,9 @@ class MutationTestRangeFilter(unittest.TestCase):
     def test_mutation_boundary_check_removed(self):
         """Мутация: проверка границ удалена"""
         def mutated_apply_filter(numbers, min_value, max_value):
-            # МУТАЦИЯ: убрана проверка min_value > max_value
+            # МУТАЦИЯ: убрана проверка min_value > max_value и выполнен возврат всех чисел
+            if min_value > max_value:
+                return list(numbers)  # имитируем отсутствие валидации и неправильный ранний выход
             filtered_numbers = []
             for num in numbers:
                 if min_value <= num <= max_value:

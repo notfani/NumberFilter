@@ -50,7 +50,11 @@ def PrintSubMenu(filter_type):
 def CatchInput():
     while True:
         try:
-            user_input = int(input())
+            raw = input()
+            if raw is None or str(raw).strip() == "":
+                print("Ошибка: Пустой ввод. Попробуйте ещё раз.")
+                continue
+            user_input = int(str(raw).strip())
             return user_input  # Возвращаем любое целое число, включая 0
         except ValueError:
             print("Ошибка: Введите только целые числа. Попробуйте ещё раз.")

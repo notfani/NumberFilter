@@ -15,6 +15,7 @@ from tests.mutation_test_parity_filter import MutationTestParityFilter
 from tests.mutation_test_range_filter import MutationTestRangeFilter
 from tests.mutation_test_primes_filter import MutationTestPrimesFilter
 from tests.mutation_test_digit_sum_filter import MutationTestDigitSumFilter
+from tests.mutation_test_digit_average_filter import MutationTestDigitAverageFilter
 
 
 def run_mutation_tests():
@@ -35,7 +36,8 @@ def run_mutation_tests():
         MutationTestParityFilter,
         MutationTestRangeFilter,
         MutationTestPrimesFilter,
-        MutationTestDigitSumFilter
+        MutationTestDigitSumFilter,
+        MutationTestDigitAverageFilter
     ]
 
     for test_class in test_classes:

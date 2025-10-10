@@ -20,7 +20,8 @@ class MutationTestPrimesFilter(unittest.TestCase):
     """
 
     def setUp(self):
-        self.test_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+        # Добавлены числа 25 (5^2), 49 (7^2), 121 (11^2) для выявления граничных мутаций
+        self.test_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 25, 49, 121]
 
     def test_mutation_wrong_base_case(self):
         """Мутация: граница n < 2 заменена на n < 1"""
